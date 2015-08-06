@@ -14,6 +14,7 @@ public class Arm extends Subsystem {
 		roller = new Talon(rollerSlot);
         leftSolenoid = new Solenoid (solenoidSlot1);
         rightSolenoid = new Solenoid (solenoidSlot2);
+        retract();
 	}
 	
 
@@ -27,6 +28,10 @@ public class Arm extends Subsystem {
 	public void retract() {
 		leftSolenoid.set(true);
 		rightSolenoid.set(false);
+	}
+	
+	public void setThrottle(double throttle){
+		roller.set(throttle);	
 	}
 	
 	/**

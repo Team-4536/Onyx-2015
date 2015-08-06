@@ -5,13 +5,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class FrontIntake extends CommandBase {
+public class InsertNameHere extends CommandBase {
 	
 	public double throttle;
 
-    public FrontIntake(double Throttle) {
+    public InsertNameHere(double throttle) {
         // Use requires() here to declare subsystem dependencies
+        requires(backArm);
         requires(frontArm);
+        this.throttle = throttle;
     }
 
     // Called just before this Command runs the first time
@@ -20,6 +22,8 @@ public class FrontIntake extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	backArm.setThrottle(throttle);
+    	frontArm.setThrottle(-throttle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
