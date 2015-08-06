@@ -22,10 +22,10 @@ public class ArmOutIntake extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(frontArm.isExtended()){
-    		frontArm.setThrottle(1.0);
+    		frontArm.setThrottle(0.3);
     	}
     	if(backArm.isExtended()){
-    		backArm.setThrottle(1.0);
+    		backArm.setThrottle(0.3);
     	}
     }
 
@@ -36,10 +36,13 @@ public class ArmOutIntake extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+    	frontArm.setThrottle(0);
+    	backArm.setThrottle(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

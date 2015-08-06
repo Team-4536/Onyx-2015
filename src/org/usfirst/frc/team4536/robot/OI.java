@@ -20,8 +20,8 @@ public class OI {
 	public static Button frontArmToggleButton;
 	public static Button backArmToggleButton;
 	public static Button intakeButton;
-	public static Button NeedsANameButton1;
-	public static Button NeedsANameButton2;
+	public static Button frontOuttake;
+	public static Button backOuttake;
 
 	public OI(){
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
@@ -37,11 +37,11 @@ public class OI {
 		intakeButton.whileHeld(new ArmOutIntake());
 		
 		/*--------------------------------SecondaryStick Buttons----------------------------*/
-		NeedsANameButton1 = new JoystickButton(secondaryStick, 3);
-		NeedsANameButton2 = new JoystickButton(secondaryStick, 2);
+		frontOuttake = new JoystickButton(secondaryStick, 3);
+		backOuttake = new JoystickButton(secondaryStick, 2);
 		
-		NeedsANameButton1.whileHeld(new InsertNameHere(secondaryStick.getZ()));
-		NeedsANameButton2.whileHeld(new InsertNameHere(-secondaryStick.getZ()));
+		frontOuttake.whileHeld(new Outtake(secondaryStick.getZ()));
+		backOuttake.whileHeld(new Outtake(-secondaryStick.getZ()));
 	
 	}
 }
