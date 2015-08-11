@@ -35,7 +35,7 @@ public class OI {
 		
 		frontArmToggleButton.whenPressed(new ToggleFrontArm());
 		backArmToggleButton.whenPressed(new ToggleBackArm());
-		intakeButton.whileHeld(new ArmOutIntake());
+		intakeButton.whileHeld(new Intake());
 		
 		/*--------------------------------SecondaryStick Buttons----------------------------*/
 		frontOuttake = new JoystickButton(secondaryStick, 3);

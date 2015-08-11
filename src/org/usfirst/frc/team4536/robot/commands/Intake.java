@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ArmOutIntake extends CommandBase {
+public class Intake extends CommandBase {
 	
 	public double throttle;
 
-    public ArmOutIntake() {
+    public Intake() {
         // Use requires() here to declare subsystem dependencies
         requires(frontArm);
         requires(backArm);
