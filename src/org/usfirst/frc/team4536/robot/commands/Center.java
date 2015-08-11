@@ -1,23 +1,16 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.OI;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Outtake extends CommandBase {
-	
-	double throttle;
-	double direction;
+public class Center extends CommandBase {
 
-    public Outtake(int direction) {
+    public Center() {
         // Use requires() here to declare subsystem dependencies
-        requires(backArm);
         requires(frontArm);
-        this.direction = direction;
-        // A positive direction makes it outtake forward, negative makes it outtake backward
+        requires(backArm);
     }
 
     // Called just before this Command runs the first time
@@ -26,10 +19,8 @@ public class Outtake extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	throttle = (-0.5 * OI.secondaryStick.getZ()) + 0.5;
-    	backArm.setThrottle(direction*throttle);
-    	frontArm.setThrottle(-direction*throttle);
-    	System.out.println(throttle);
+    	frontArm.setThrottle(.5);
+    	backArm.setThrottle(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -46,6 +37,5 @@ public class Outtake extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

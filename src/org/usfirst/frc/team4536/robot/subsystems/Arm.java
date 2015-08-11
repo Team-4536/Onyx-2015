@@ -26,8 +26,8 @@ public class Arm extends Subsystem {
 	 * @author Stepan
 	 */
 	public void retract() {
-		leftSolenoid.set(true);
-		rightSolenoid.set(false);
+		leftSolenoid.set(false);
+		rightSolenoid.set(true);
 	}
 	
 	public void setThrottle(double throttle){
@@ -38,8 +38,8 @@ public class Arm extends Subsystem {
 	 * @author Stepan
 	 */
 	public void extend() {
-		leftSolenoid.set(false);
-		rightSolenoid.set(true);
+		leftSolenoid.set(true);
+		rightSolenoid.set(false);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class Arm extends Subsystem {
 	 * @author Stepan
 	 */
 	public boolean isExtended() {
-		return rightSolenoid.get();
+		return leftSolenoid.get();
 	}
 }
 

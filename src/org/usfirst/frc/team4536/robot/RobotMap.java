@@ -17,9 +17,9 @@ public class RobotMap {
     public static final int SECONDARY_STICK = 1; // (Also the right stick for tank drive)
     
     /*-------------------------------------Solenoid Channels------------------------------------*/	
-    public static final int FRONT_ARM_RIGHT_SOLENOID_CHANNEL = 5;
+    public static final int FRONT_ARM_RIGHT_SOLENOID_CHANNEL = 4;
 	public static final int FRONT_ARM_LEFT_SOLENOID_CHANNEL = 6;
-	public static final int BACK_ARM_RIGHT_SOLENOID_CHANNEL = 4;
+	public static final int BACK_ARM_RIGHT_SOLENOID_CHANNEL = 5;
 	public static final int BACK_ARM_LEFT_SOLENOID_CHANNEL = 7;
 }
 
