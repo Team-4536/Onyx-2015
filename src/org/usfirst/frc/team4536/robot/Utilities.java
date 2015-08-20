@@ -1,9 +1,11 @@
 package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
+	public static PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
 	
 	/*-----------------------------------------------------variables--------------------------------------------*/
 	
@@ -145,5 +147,44 @@ public class Utilities {
 		
 		
 		return finalThrottle;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return The total current drawn from the power distribution board from ALL robot systems.
+	 */
+	public static double getTotalCurrent() {
+		
+		return powerDistributionPanel.getTotalCurrent();
+	}
+	
+	/**
+	 * @author Liam
+	 * @param integer of a Power Distribution Panel Slot
+	 * @return the current drawn from the input slot from the parameter
+	 */
+	public static double getCurrent(int slot) {
+		
+		return powerDistributionPanel.getCurrent(slot);
+	}
+
+	/**
+	 * @author Liam
+	 * @return driveCurrent - The current in use in units of amperes by the drive motors of the robot.
+	 */
+	public static double getDriveCurrent() {
+		
+		double driveCurrent = powerDistributionPanel.getCurrent(Constants.LEFT_DRIVE_MOTOR_PDP_SLOT) + powerDistributionPanel.getCurrent(Constants.RIGHT_DRIVE_MOTOR_PDP_SLOT);
+		return driveCurrent;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return rollerCurrent - the current in use in units of amperes by the roller motors of the robot.
+	 */
+	public static double getRollerCurrent() {
+		
+		double rollerCurrent = powerDistributionPanel.getCurrent(Constants.BACK_ROLLER_PDP_SLOT) + powerDistributionPanel.getCurrent(Constants.FRONT_ROLLER_PDP_SLOT);
+		return rollerCurrent;
 	}
 }
