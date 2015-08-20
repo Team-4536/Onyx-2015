@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ToggleBackArm extends CommandBase {
 
+	boolean prevArmValue;
+	boolean armValue;
+	
     public ToggleBackArm() {
         // Use requires() here to declare subsystem dependencies
         requires(backArm);    
@@ -15,16 +18,22 @@ public class ToggleBackArm extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	prevArmValue = backArm.isExtended();
     	backArm.flip();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	armValue = backArm.isExtended();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        if (armValue != prevArmValue){
+        	return true;
+        	}
+        else
+        	return false;
     }
 
     // Called once after isFinished returns true
@@ -34,5 +43,6 @@ public class ToggleBackArm extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }
