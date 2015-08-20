@@ -27,9 +27,12 @@ public class Drive extends CommandBase {
 	 * @author Noah
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(speedLimit*Utilities.speedCurve(Utilities.deadZone(-OI.mainStick.getX(), Constants.DEAD_ZONE), Constants.SPEED_CURVE), speedLimit*Utilities.speedCurve(Utilities.deadZone(OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE));
+    	driveTrain.arcadeDrive(speedLimit*Utilities.speedCurve(Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE), speedLimit*Utilities.speedCurve(Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE), Constants.SPEED_CURVE));
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
+    	SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
+    	SmartDashboard.putNumber("DriveCurrent: ", Utilities.getDriveCurrent());
+    	SmartDashboard.putNumber("Roller Current: ", Utilities.getRollerCurrent());
     }
     
     protected boolean isFinished() {
