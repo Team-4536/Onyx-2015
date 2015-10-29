@@ -18,7 +18,9 @@ public abstract class CommandBase extends Command {
 
 	public static Arm frontArm = new Arm(RobotMap.FRONT_ROLLER_MOTOR, RobotMap.FRONT_ARM_LEFT_SOLENOID_CHANNEL, RobotMap.FRONT_ARM_RIGHT_SOLENOID_CHANNEL);
 	public static Arm backArm = new Arm(RobotMap.BACK_ROLLER_MOTOR, RobotMap.BACK_ARM_LEFT_SOLENOID_CHANNEL, RobotMap.BACK_ARM_RIGHT_SOLENOID_CHANNEL);
-
+	
+	public static Ultrasonic ultrasonic = new Ultrasonic(RobotMap.ULTRA_CHANNEL);
+	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
      //eg. requires(chassis);

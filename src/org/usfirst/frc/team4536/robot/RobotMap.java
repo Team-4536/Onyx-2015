@@ -21,5 +21,8 @@ public class RobotMap {
 	public static final int FRONT_ARM_LEFT_SOLENOID_CHANNEL = 6;
 	public static final int BACK_ARM_RIGHT_SOLENOID_CHANNEL = 5;
 	public static final int BACK_ARM_LEFT_SOLENOID_CHANNEL = 7;
+	
+	/*-------------------------------------Ultrasonic Channel---------------------------------*/
+	public static final int ULTRA_CHANNEL = 0;
 }
 

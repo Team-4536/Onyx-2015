@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command driveCommand;
     Command compressorCommand;
+    Command autoIntakeCommand;
     
 
     /**
@@ -33,9 +34,11 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
+		
         autonomousCommand = new ExampleCommand();
         driveCommand = new Drive(1);
         compressorCommand = new RunCompressor();
+        autoIntakeCommand = new AutoIntake();
     }
 	
 	public void disabledPeriodic() {
@@ -75,6 +78,9 @@ public class Robot extends IterativeRobot {
         	driveCommand.cancel();
         if(compressorCommand != null)
             compressorCommand.cancel();
+        if(autoIntakeCommand != null) {
+        	autoIntakeCommand.cancel();
+        }
     }
 
     /**
@@ -85,6 +91,9 @@ public class Robot extends IterativeRobot {
         
         if (driveCommand != null)
         	driveCommand.start();
+        if (autoIntakeCommand != null) {
+        	autoIntakeCommand.start();
+        }
     }
     
     /**
