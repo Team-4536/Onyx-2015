@@ -23,6 +23,7 @@ public class OI {
 	public static Button frontOuttake;
 	public static Button backOuttake;
 	public static Button centering;
+	public static Button autoIntake;
 
 	public OI(){
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
@@ -37,14 +38,22 @@ public class OI {
 		backArmToggleButton.whenPressed(new ToggleBackArm());
 		intakeButton.whileHeld(new Intake());
 		
+		intakeButton.whenReleased(new AutoIntake());
+		
 		/*--------------------------------SecondaryStick Buttons----------------------------*/
+		//autoIntake = new JoystickButton(secondaryStick, 4);
 		frontOuttake = new JoystickButton(secondaryStick, 3);
 		backOuttake = new JoystickButton(secondaryStick, 2);
 		centering = new JoystickButton(secondaryStick, 1);
 		
+		//autoIntake.whenPressed(new AutoIntake());
 		frontOuttake.whileHeld(new Outtake(1)); // 1 makes it go forward, -1 backward
 		backOuttake.whileHeld(new Outtake(-1));	
 		centering.whileHeld(new Center());
+		
+		frontOuttake.whenReleased(new AutoIntake());
+		backOuttake.whenReleased(new AutoIntake());
+		centering.whenReleased(new AutoIntake());
 	}
 }
 ////CREATING BUTTONS

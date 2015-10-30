@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4536.robot.subsystems.*;
 import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
@@ -17,10 +17,10 @@ import org.usfirst.frc.team4536.robot.commands.*;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-
+	
     Command autonomousCommand;
     Command driveCommand;
     Command compressorCommand;
@@ -66,6 +66,9 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        if (autoIntakeCommand != null) {
+        	autoIntakeCommand.start();
+        }
     }
 
     /**
@@ -79,7 +82,7 @@ public class Robot extends IterativeRobot {
         if(compressorCommand != null)
             compressorCommand.cancel();
         if(autoIntakeCommand != null) {
-        	autoIntakeCommand.cancel();
+        	//autoIntakeCommand.cancel();
         }
     }
 
@@ -89,10 +92,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        if (driveCommand != null)
+        if (driveCommand != null) {
         	driveCommand.start();
-        if (autoIntakeCommand != null) {
-        	autoIntakeCommand.start();
         }
     }
     

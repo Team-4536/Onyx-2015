@@ -1,10 +1,12 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.OI;
+import edu.wpi.first.wpilibj.Timer;
 
 public class AutoIntake extends CommandBase {
 	
 	boolean running;
+	Timer time;
 	
 	public AutoIntake() {
 		requires(ultrasonic);
@@ -13,9 +15,13 @@ public class AutoIntake extends CommandBase {
 	}
 	
 	protected void initialize() {
+		time = new Timer();
+		time.start();
+		running = false;
     }
 	
     protected void execute() {
+    	System.out.println(OI.frontOuttake.get());
     	if (OI.frontOuttake.get() == false) {
     		if (ultrasonic.returnValue() <= 2) {
     			if (frontArm.isExtended() == false) {
@@ -35,14 +41,27 @@ public class AutoIntake extends CommandBase {
     			backArm.setThrottle(0);
     			running = false;
     		}
+    		else {
+    			running = false;
+    		}
     	}
     }
     
     protected boolean isFinished() {
-        return false;
+    	if (time.get() > 10) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
     
     protected void end() {
+    	frontArm.retract();
+		frontArm.setThrottle(0);
+		backArm.retract();
+		backArm.setThrottle(0);
+		running = false;
     }
     
     protected void interrupted() {
