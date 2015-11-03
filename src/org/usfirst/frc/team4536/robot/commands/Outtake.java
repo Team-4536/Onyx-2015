@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Outtake extends CommandBase {
 	
 	double throttle;
-	double direction;
+	double Direction;
 
     public Outtake(int direction) {
         // Use requires() here to declare subsystem dependencies
         requires(backArm);
         requires(frontArm);
-        this.direction = direction;
+        Direction = direction;
         // A positive direction makes it outtake forward, negative makes it outtake backward
     }
 
@@ -27,8 +27,8 @@ public class Outtake extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	throttle = (-0.5 * OI.secondaryStick.getZ()) + 0.5;
-    	backArm.setThrottle(direction*throttle);
-    	frontArm.setThrottle(-direction*throttle);
+    	backArm.setThrottle(Direction*throttle);
+    	frontArm.setThrottle(-Direction*throttle);
     	System.out.println(throttle);
     }
 

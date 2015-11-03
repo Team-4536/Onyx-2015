@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         if (autoIntakeCommand != null) {
-        	autoIntakeCommand.start();
+        	//autoIntakeCommand.start();
         }
     }
 

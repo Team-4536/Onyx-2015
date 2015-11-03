@@ -48,7 +48,7 @@ public class AutoIntake extends CommandBase {
     }
     
     protected boolean isFinished() {
-    	if (time.get() > 10) {
+    	if (time.get() > 10 && running == true) {
     		return true;
     	}
     	else {
