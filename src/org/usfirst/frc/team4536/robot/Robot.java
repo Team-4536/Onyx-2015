@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     Command driveCommand;
     Command compressorCommand;
     Command autoIntakeCommand;
+    Command runCameraCommand;
     
 
     /**
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
         driveCommand = new Drive(1);
         compressorCommand = new RunCompressor();
         autoIntakeCommand = new AutoIntake();
+        runCameraCommand = new RunCamera();
     }
 	
 	public void disabledPeriodic() {
@@ -66,8 +68,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        if (autoIntakeCommand != null) {
-        	//autoIntakeCommand.start();
+        if (runCameraCommand != null) {
+        	runCameraCommand.start();
         }
     }
 
@@ -81,8 +83,8 @@ public class Robot extends IterativeRobot {
         	driveCommand.cancel();
         if(compressorCommand != null)
             compressorCommand.cancel();
-        if(autoIntakeCommand != null) {
-        	//autoIntakeCommand.cancel();
+        if(runCameraCommand != null) {
+        	runCameraCommand.cancel();
         }
     }
 

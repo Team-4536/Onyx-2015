@@ -21,6 +21,8 @@ public abstract class CommandBase extends Command {
 	
 	public static Ultrasonic ultrasonic = new Ultrasonic(RobotMap.ULTRA_CHANNEL);
 	
+	public static Camera camera = new Camera();
+	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
      //eg. requires(chassis);
