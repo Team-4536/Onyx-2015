@@ -84,7 +84,7 @@ public class Robot extends IterativeRobot {
         if(compressorCommand != null)
             compressorCommand.cancel();
         if(runCameraCommand != null) {
-        	runCameraCommand.cancel();
+        	//runCameraCommand.cancel();
         }
     }
 
