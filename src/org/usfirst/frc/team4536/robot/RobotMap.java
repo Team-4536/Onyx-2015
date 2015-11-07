@@ -24,5 +24,10 @@ public class RobotMap {
 	
 	/*-------------------------------------Ultrasonic Channel---------------------------------*/
 	public static final int ULTRA_CHANNEL = 0;
+	
+	/*-------------------------------------Accelerometer Channel---------------------------------*/
+	public static final int X_CHANNEL = 1;
+	public static final int Y_CHANNEL = 2;
+	public static final int Z_CHANNEL = 3;
 }
 

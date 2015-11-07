@@ -16,7 +16,7 @@ public class Ultrasonic extends Subsystem {
 	}
 	
 	public double returnValue() {
-		distance = ultra.getValue() / 226.5 * 0.3917 * 12;
+		distance = ultra.getValue() / 226.5 * 0.3917 * 80;
 		System.out.println(distance);
 		return distance;
 	}

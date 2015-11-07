@@ -21,7 +21,7 @@ public class AutoIntake extends CommandBase {
     }
 	
     protected void execute() {
-    	System.out.println(OI.frontOuttake.get());
+    	//System.out.println(OI.frontOuttake.get());
     	if (OI.frontOuttake.get() == false) {
     		if (ultrasonic.returnValue() <= 2) {
     			if (frontArm.isExtended() == false) {

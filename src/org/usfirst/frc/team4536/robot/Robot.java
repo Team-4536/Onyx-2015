@@ -26,6 +26,10 @@ public class Robot extends IterativeRobot {
     Command compressorCommand;
     Command autoIntakeCommand;
     Command runCameraCommand;
+    Command accelCommand;
+    Command runRadarCommand;
+    Command setGimbleCommand;
+    Command getDistanceCommand;
     
 
     /**
@@ -41,6 +45,10 @@ public class Robot extends IterativeRobot {
         compressorCommand = new RunCompressor();
         autoIntakeCommand = new AutoIntake();
         runCameraCommand = new RunCamera();
+        accelCommand = new Accel();
+        runRadarCommand = new RunRadar();
+        setGimbleCommand = new SetGimble();
+        getDistanceCommand = new GetDistance();
     }
 	
 	public void disabledPeriodic() {
@@ -53,6 +61,9 @@ public class Robot extends IterativeRobot {
         	autonomousCommand.start();
         if(compressorCommand != null)
             compressorCommand.start();
+        if (runRadarCommand != null) {
+        	runRadarCommand.start();
+        }
     }
 
     /**
@@ -69,8 +80,14 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         if (runCameraCommand != null) {
-        	runCameraCommand.start();
+        	//runCameraCommand.start();
         }
+        //if (accelCommand != null) {
+        	//accelCommand.start();
+        //}
+        //if (setGimbleCommand != null) {
+        	//setGimbleCommand.start();
+        //}
     }
 
     /**
@@ -86,6 +103,7 @@ public class Robot extends IterativeRobot {
         if(runCameraCommand != null) {
         	//runCameraCommand.cancel();
         }
+        	runRadarCommand.cancel();
     }
 
     /**

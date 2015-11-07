@@ -38,7 +38,7 @@ public class OI {
 		backArmToggleButton.whenPressed(new ToggleBackArm());
 		intakeButton.whileHeld(new Intake());
 		
-		intakeButton.whenReleased(new AutoIntake());
+		intakeButton.whenReleased(new RunRadar());
 		
 		/*--------------------------------SecondaryStick Buttons----------------------------*/
 		//autoIntake = new JoystickButton(secondaryStick, 4);
@@ -52,8 +52,8 @@ public class OI {
 		centering.whileHeld(new Center());
 		
 		frontOuttake.whenReleased(new AutoIntake());
-		backOuttake.whenReleased(new AutoIntake());
-		centering.whenReleased(new AutoIntake());
+		backOuttake.whenReleased(new RunRadar());
+		centering.whenReleased(new RunRadar());
 	}
 }
 ////CREATING BUTTONS
