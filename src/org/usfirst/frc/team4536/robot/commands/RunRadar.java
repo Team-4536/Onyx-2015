@@ -26,6 +26,7 @@ public class RunRadar extends CommandBase {
     }
     
     protected void execute() {
+    	
     	while (time.get() < 3) {
     		if (ultrasonic.returnValue() <= 20) {
     			if (frontArm.isExtended() == false) {
