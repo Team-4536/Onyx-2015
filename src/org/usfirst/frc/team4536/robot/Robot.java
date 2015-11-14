@@ -57,13 +57,13 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) 
-        	autonomousCommand.start();
+        //if (autonomousCommand != null) 
+        	//autonomousCommand.start();
         if(compressorCommand != null)
             compressorCommand.start();
-        if (runRadarCommand != null) {
-        	runRadarCommand.start();
-        }
+        //if (runRadarCommand != null) {
+        	//runRadarCommand.start();
+        //}
     }
 
     /**
@@ -78,13 +78,15 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        if (runCameraCommand != null) {
-        	//runCameraCommand.start();
-        }
-        //if (accelCommand != null) {
-        	//accelCommand.start();
+        //if (runRadarCommand != null) {
+        	//runRadarCommand.cancel();
         //}
+        //if (runCameraCommand != null) {
+        	//runCameraCommand.start();
+        //}
+        if (compressorCommand != null) {
+        	compressorCommand.start();
+        }
         //if (setGimbleCommand != null) {
         	//setGimbleCommand.start();
         //}
@@ -103,7 +105,9 @@ public class Robot extends IterativeRobot {
         if(runCameraCommand != null) {
         	//runCameraCommand.cancel();
         }
-        	runRadarCommand.cancel();
+        //if (runRadarCommand != null) {
+        	//runRadarCommand.cancel();
+        //}
     }
 
     /**

@@ -20,32 +20,36 @@ public class RunRadar extends CommandBase {
 	
 	protected void initialize() {
 		time = new Timer();
-		time.start();
+		//time.start();
 		gimble.setLatPos(.3);
 		gimble.setVertPos(1);
     }
     
     protected void execute() {
-    	
-    	while (time.get() < 3) {
-    		if (ultrasonic.returnValue() <= 20) {
-    			if (frontArm.isExtended() == false) {
-    			frontArm.extend();
-    			}
-    			frontArm.setThrottle(.5);
-    			if (backArm.isExtended() == true) {
-    				backArm.retract();
-    			}
-    			backArm.setThrottle(-.15);
-    		}
+    	time.start();
+    	while (ultrasonic.returnValue() >= 20) {
     	}
+    	while (time.get() < 3) {
+			if (frontArm.isExtended() == false) {
+			frontArm.extend();
+			}
+			frontArm.setThrottle(.5);
+			if (backArm.isExtended() == true) {
+				backArm.retract();
+			}
+			backArm.setThrottle(-.15);
+		}
     	frontArm.retract();
 		frontArm.setThrottle(0);
 		backArm.retract();
 		backArm.setThrottle(0);
     	gimble.setLatPos(0.5);
     	gimble.setVertPos(0.7);
-    	while (ultrasonic.returnValue() < 100) {
+    	Time = time.get();
+    	while (time.get() <= Time + 2) {
+    		
+    	}
+    	while (ultrasonic.returnValue() < 200) {
     		driveTrain.arcadeDrive(0, 0.4);
     	}
     	driveTrain.arcadeDrive(0, 0);
@@ -56,6 +60,10 @@ public class RunRadar extends CommandBase {
     	}
     	gimble.setLatPos(0.3);
     	gimble.setVertPos(1);
+    	Time = time.get();
+    	while (time.get() < Time + 1) {
+    		
+    	}
     	while (ultrasonic.returnValue() > 20) {
     		driveTrain.arcadeDrive(0.75, 0);
     	}
@@ -85,9 +93,11 @@ public class RunRadar extends CommandBase {
 		frontArm.setThrottle(0);
 		backArm.retract();
 		backArm.setThrottle(0);
+		time.reset();
     }
     
     protected void interrupted() {
+    	end();
     }
 	
 }

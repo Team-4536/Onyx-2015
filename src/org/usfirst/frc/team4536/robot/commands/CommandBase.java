@@ -23,7 +23,9 @@ public abstract class CommandBase extends Command {
 	
 	public static Accelerometer accelerometer = new Accelerometer(RobotMap.X_CHANNEL, RobotMap.Y_CHANNEL, RobotMap.Z_CHANNEL);
 	
-	public static Gimble gimble = new Gimble(4, 5);
+	public static Gimble gimble = new Gimble(RobotMap.H_CHANNEL, RobotMap.V_CHANNEL);
+	
+	public static Gyroscope gyro = new Gyroscope(RobotMap.GYRO_CHANNEL);
 	
 	public static Camera camera = new Camera();
 	
