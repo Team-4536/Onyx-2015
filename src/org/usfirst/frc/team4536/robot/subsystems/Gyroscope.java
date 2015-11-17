@@ -27,7 +27,6 @@ public class Gyroscope extends Subsystem{
 		else if (position < -180) {
 			position = position + 360;
 		}
-		System.out.println(position);
 		return position;
 	}
 	

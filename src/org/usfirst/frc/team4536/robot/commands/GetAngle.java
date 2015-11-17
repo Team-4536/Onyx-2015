@@ -1,17 +1,19 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-public class SetGimble extends CommandBase {
+public class GetAngle extends CommandBase {
 	
-	public SetGimble() {
-		requires(gimble);
+	double angle;
+	
+	public GetAngle() {
+		requires(gyro);
 	}
 	
 	protected void initialize() {
     }
     
     protected void execute() {
-    	gimble.setLatPos(0);
-    	gimble.setVertPos(.6);
+    	angle = gyro.getPos();
+    	System.out.println(angle);
     }
     
     protected boolean isFinished() {
@@ -19,9 +21,11 @@ public class SetGimble extends CommandBase {
     }
     
     protected void end() {
+    	gyro.reset();
     }
     
     protected void interrupted() {
+    	end();
     }
 	
 }

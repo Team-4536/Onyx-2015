@@ -33,8 +33,8 @@ public class TurnCatch extends CommandBase {
     	gyro.reset();
     	time.reset();
     	time.start();
-    	gimble.setLatPos(.2);
-		gimble.setVertPos(.8);
+    	gimble.setLatPos(0);
+		gimble.setVertPos(.9);
     	frontArm.retract();
 		frontArm.setThrottle(0);
 		backArm.retract();
@@ -56,18 +56,14 @@ public class TurnCatch extends CommandBase {
 		frontArm.setThrottle(0);
 		backArm.retract();
 		backArm.setThrottle(0);
+		gimble.setLatPos(.5);
+		gimble.setVertPos(.6);
 		Time = time.get();
-		while (time.get() < Time + .5) {
-			driveTrain.arcadeDrive(0, .5);
+		while (time.get() < Time + 1.5) {
+			driveTrain.arcadeDrive(0, .3);
 		}
-		while ((gyro.getPos() <= 86 || gyro.getPos() >= 88) && gyro.getRate() > .1) {
-			pos = gyro.getPos();
-			diff = 90 - pos;
-			speed = diff / 70;
-			if (speed > .5) {
-				speed = .5;
-			}
-			driveTrain.arcadeDrive(0, speed);
+		while (ultrasonic.returnValue() > 36) {
+			driveTrain.arcadeDrive(0, .3);
 		}
 		driveTrain.arcadeDrive(0, 0);
     	Time = time.get();

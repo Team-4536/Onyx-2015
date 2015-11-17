@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
     Command runRadarCommand;
     Command setGimbleCommand;
     Command getDistanceCommand;
+    Command getAngleCommand;
     
 
     /**
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
         runRadarCommand = new RunRadar();
         setGimbleCommand = new SetGimble();
         getDistanceCommand = new GetDistance();
+        getAngleCommand = new GetAngle();
     }
 	
 	public void disabledPeriodic() {
@@ -102,11 +104,11 @@ public class Robot extends IterativeRobot {
         	driveCommand.cancel();
         if(compressorCommand != null)
             compressorCommand.cancel();
-        if(runCameraCommand != null) {
-        	//runCameraCommand.cancel();
+        if(getAngleCommand != null) {
+        	getAngleCommand.cancel();
         }
-        //if (runRadarCommand != null) {
-        	//runRadarCommand.cancel();
+        //if (setGimbleCommand != null) {
+        	//setGimbleCommand.cancel();
         //}
     }
 
@@ -118,6 +120,9 @@ public class Robot extends IterativeRobot {
         
         if (driveCommand != null) {
         	driveCommand.start();
+        }
+        if (getAngleCommand != null) {
+        	getAngleCommand.start();
         }
     }
     
